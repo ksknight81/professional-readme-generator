@@ -1,10 +1,15 @@
 const inquirer = require('inquirer');
-
+const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generateMarkdown');
 
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
-const questions = () => {
+const user = userData => {
+    if (!userData) {
+        userData = [];
+    }
+
     return inquirer.prompt([
         // users name
         {
@@ -47,7 +52,13 @@ const questions = () => {
                     return false;
                 }
             }
-        },     
+        }
+    ])};
+    const promptProject = portfolioData => {  
+        if (!portfolioData.projects) {
+            portfolioData.projects = [];
+        }
+        return inquirer.prompt([   
         // project title
         { 
             type: 'input',
@@ -141,7 +152,16 @@ const questions = () => {
             }
         },
     ])
+    .then(projectData => {
+        portfolioData.projects.push(projectData);
+        if (projectData.confirmAddProject) {
+            return promptProject(portfolioData);
+        } else {
+            return portfolioData;
+        }
+    })
 } ;
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
@@ -151,5 +171,9 @@ function init() {}
 
 // Function call to initialize app
 init();
-questions();
+user()
+    .then(promptProject)
+    .then(portfolioData => {
+        return generatePage(portfolioData);
+    })
  
