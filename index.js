@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./utils/generateMarkdown');
-
+const { writeFile } = require('./utils/generateMarkdown');
+//, copyFile
 // TODO: Include packages needed for this application
 
 // TODO: Create an array of questions for user input
@@ -159,21 +159,25 @@ const user = userData => {
         } else {
             return portfolioData;
         }
-    })
+    });
 } ;
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+// function init() {}
 
 // Function call to initialize app
-init();
+
 user()
     .then(promptProject)
     .then(portfolioData => {
+       // console.log(portfolioData);
         return generatePage(portfolioData);
+    })
+    .then(pageReadme => {
+        return writeFile(pageReadme);
     })
  
