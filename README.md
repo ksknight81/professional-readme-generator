@@ -12,4 +12,4 @@ In order to achieve this, I used the npm inquirer.
 
 The link to the GitHub repository is:  https://github.com/ksknight81/professional-readme-generator 
 
-The video for the program is:  
+The video for the program is:  https://github.com/ksknight81/professional-readme-generator/blob/main/video/Untitled_%20Jul%206%2C%202022%209_59%20PM.webm
