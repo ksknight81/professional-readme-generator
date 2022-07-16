@@ -1,15 +1,16 @@
 // project title
     // uses titleInput
-const generateTitle = titleInput => {
-    if (!titleInput) {
-        return '';
-    }
+const generateTitle = portfolioData => {
+    let { title } = portfolioData.projects;
+    // if (!titleInput) {
+    //     return '';
+    // }
     return `
-        <section id="title">
         Application Title:
-        ${titleInput}
-    `;
+        ${title}
+    `
 };
+
 // Description
     // uses descriptionInput
 const generateDescription = descriptionInput => {
@@ -95,9 +96,10 @@ const generateDescription = descriptionInput => {
 const generateQuestions = userData => {
     let {name, github, email} = userData;
     return `
-    <section id="questions">
         Questions?
-        If you have any additional questions regarding this project, please feel free to reach out to ${name} at ${email} or alternatively, check out my github account at <a href="https://github.com/${github}</a>
+        If you have any additional questions regarding this project, please feel free to reach out to ${name} at ${email} 
+        or alternatively, check out my github account at https://github.com/${github}
 `}
 
-module.exports = generateQuestions
+ module.exports = generateQuestions
+//module.exports =  generateTitle

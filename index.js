@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const { writeFile } = require('./utils/generateMarkdown');
+console.log(writeFile);
 //, copyFile
 // TODO: Include packages needed for this application
 
@@ -54,6 +55,7 @@ const user = userData => {
             }
         }
     ])};
+    
     const promptProject = portfolioData => {  
         if (!portfolioData.projects) {
             portfolioData.projects = [];
@@ -152,6 +154,7 @@ const user = userData => {
             }
         },
     ])
+    
     .then(projectData => {
         portfolioData.projects.push(projectData);
         if (projectData.confirmAddProject) {

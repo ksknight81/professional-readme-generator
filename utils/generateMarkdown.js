@@ -16,7 +16,7 @@ const writeFile = fileContent => {
   });
 };
 //, copyFile
-module.exports = { writeFile};
+
 
 
 
@@ -40,4 +40,6 @@ function generateMarkdown(data) {
 `;
 }
 
-module.exports = generateMarkdown;
+
+
+module.exports = { writeFile, generateMarkdown };
